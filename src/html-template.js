@@ -43,7 +43,7 @@ const htmlTemplate = function (answers) {
         <ul class="list-group list-group-flush">
           <li class="list-group-item">ID: ${answers.id}</li>
           <li class="list-group-item">Email: ${answers.email}</li>
-          <li class="list-group-item">GitHub: ${answers.officeNumber}</li>
+          <li class="list-group-item">Office Number: ${answers.officeNumber}</li>
           <li class="list-group-item">GitHub: ${answers.github}</li>
           <li class="list-group-item">School: ${answers.school}</li>
         </ul>

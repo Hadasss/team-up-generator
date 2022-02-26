@@ -8,8 +8,8 @@ const promptUser = () => {
       type: "input",
       name: "managerName",
       message: "What is the team manager's name? (Required)",
-      validate: (titleInput) => {
-        if (titleInput) {
+      validate: (answers) => {
+        if (answers) {
           return true;
         } else {
           console.log("Hello manager! Please enter your name!");
@@ -20,7 +20,8 @@ const promptUser = () => {
     {
       type: "input",
       name: "id",
-      message: "Please enter your employee ID",
+      message: (answers) =>
+        `Hello ${answers.managerName}! Please enter your employee ID`,
     },
     {
       type: "input",
@@ -34,9 +35,29 @@ const promptUser = () => {
     },
     {
       type: "checkbox",
-      name: "EmployeesArr",
-      message: "Select a type of position to add employee",
+      name: "employeeType",
+      message: "Select a type of position to add a new employee",
       choices: ["Engineer", "Intern"],
+    },
+    {
+      type: "input",
+      name: "github",
+      message: "Type GitHub username",
+      when: (answers) => {
+        if (answers.employeeType == "Engineer") {
+          return true;
+        }
+      },
+    },
+    {
+      type: "input",
+      name: "school",
+      message: "Type the name of your current school",
+      when: (answers) => {
+        if (answers.employeeType == "Intern") {
+          return true;
+        }
+      },
     },
   ]);
 };

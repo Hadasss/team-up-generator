@@ -3,8 +3,8 @@ const generateCard = function (answers) {};
 // TODO display card info based on employee class
 // TODO
 
-const htmlTemplate = function (manager, employees) {
-  console.log(manager, employees);
+const htmlTemplate = function (employees) {
+  console.log(employees);
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -38,17 +38,17 @@ const htmlTemplate = function (manager, employees) {
     <div class="col-3 m-3 p-3">
       <div class="card" style="width:18rem">
         <div class="card-body bg-light.bg-gradient">
-          <h5 class="card-title">${manager.name}</h5>
+          <h5 class="card-title">${employees[0].managerName}</h5>
           <span class="icon">
           <img src="https://img.icons8.com/external-bearicons-flat-bearicons/64/000000/external-Briefcase-business-and-marketing-bearicons-flat-bearicons.png"/>
           </span>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID: ${employee.id}</li>
-          <li class="list-group-item">Email: ${employee.email}</li>
-          <li class="list-group-item">Office Number: ${manager.officeNumber}</li>
-          <li class="list-group-item">GitHub: ${employee.github}</li>
-          <li class="list-group-item">School: ${employee.school}</li>
+          <li class="list-group-item">ID: ${employees[0].id}</li>
+          <li class="list-group-item">Email: ${employees[1].email}</li>
+          <li class="list-group-item">Office Number: ${employees[0].officeNumber}</li>
+          <li class="list-group-item">GitHub: ${employees[1].github}</li>
+          <li class="list-group-item">School: ${employees[2].school}</li>
         </ul>
       </div>
     </div>

@@ -8,13 +8,30 @@ test("creates new employee object", () => {
   expect(employee.email).toEqual(expect.any(String));
 });
 
-// TODO add test to getName()
+// add test to getName()
 test("gets employee's name", () => {
   const employee = new Employee("Hadas", "8", "hadas@mail.com");
+
+  expect(employee.name).toEqual(expect.any(String));
 });
 
-// TODO add test to getId()
+// add test to getId()
+test("gets employee's id", () => {
+  const employee = new Employee("Hadas", "8", "hadas@mail.com");
 
-// TODO add test to getEmail()
+  expect(employee.id).toEqual(expect.any(String));
+});
 
-// TODO add test to getRole()
+// add test to getEmail()
+test("gets employee's email", () => {
+  const employee = new Employee("Hadas", "8", "hadas@mail.com");
+
+  expect(employee.email).toEqual(expect.any(String));
+});
+
+// add test to getRole()
+test("gets employee's type of position", () => {
+  const employee = new Employee("Hadas", "8", "hadas@mail.com");
+
+  expect(employee.getRole()).toBe("Employee");
+});

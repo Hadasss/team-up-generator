@@ -1,4 +1,7 @@
 const inquirer = require("inquirer");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const Manager = require("./lib/Manager");
 const htmlTemplate = require("./src/html-template");
 const writeHtml = require("./utils/generateHTML");
 
@@ -44,14 +47,16 @@ const promptUser = () => {
       },
     ])
     .then((manager) => {
-      // console.log(manager);
-      employees.push(manager);
+      const newMgr = new Manager(
+        manager.managerName,
+        manager.id,
+        manager.email,
+        manager.officeNumber
+      );
+      employees.push(newMgr);
       promptEmployee();
       return employees;
     });
-  // .then(() => {
-  //   employees.push(answers);
-  // });
 };
 
 const promptEmployee = () => {
@@ -113,48 +118,32 @@ const promptEmployee = () => {
       },
     ])
     .then((response) => {
-      employees.push(response);
+      if (response.employeeType == "Engineer") {
+        const newEng = new Engineer(
+          response.name,
+          response.id,
+          response.email,
+          response.github
+        );
+        employees.push(newEng);
+      } else {
+        const newInt = new Intern(
+          response.name,
+          response.id,
+          response.email,
+          response.school
+        );
+        employees.push(newInt);
+      }
+
       if (response.addEmployee) {
         return promptEmployee();
       }
       // return returnEmployeesArr();
-      return employees;
+      // console.log(employees);
+      const template = htmlTemplate(employees);
+      writeHtml(template);
     });
 };
 
-promptUser()
-  .then((employees) => {
-    htmlTemplate(employees);
-  })
-  .then((fileContent) => writeHtml(fileContent))
-  .catch((err) => {
-    console.log(err);
-  });
-// .then((answers) => {
-//   return answers;
-// })
-// .then(() => {
-//   promptEmployee()
-//     .then((response) => {
-//       return response;
-//     })
-//     .then((answers, response) => {
-//       console.log(answers, response);
-//       htmlTemplate(answers, response);
-//     })
-//     .then((fileContent) => writeHtml(fileContent))
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
-
-// .then((response) => {
-//   return response;
-// })
-// .then((answers, response) => htmlTemplate(answers, response))
-// .then((fileContent) => writeHtml(fileContent))
-// .catch((err) => {
-//   console.log(err);
-// });
-
-// module.exports = promptUser;
+promptUser();

@@ -1,7 +1,64 @@
 // TODO function to check type of employee (class)
-const generateCard = function (answers) {};
-// TODO display card info based on employee class
-// TODO
+const cardGen = function (answers) {
+  let managerTemp = "",
+    engTemp = "",
+    intTemp = "";
+  // let finishedTemplate = "";
+  answers.forEach((employee) => {
+    if (employee.getRole() == "Manager") {
+      managerTemp += `
+
+  <div class="card bg-light shadow p-0 m-2" style="width:18rem">
+    <div class="card-body bg-primary">
+      <h3 class="card-title text-light">${employee.name}</h3>
+      <h5 class="text-light">💼 ${employee.getRole()}</h5>
+    </div>
+    <ul class="list-group list-group-flush m-4">
+      <li class="list-group-item">ID: ${employee.id}</li>
+      <li class="list-group-item">Email: ${employee.email}</li>
+      <li class="list-group-item">Office Number: ${employee.officeNumber}</li>
+    </ul>
+  </div>
+
+`;
+    } else if (employee.getRole() == "Engineer") {
+      engTemp += `
+
+  <div class="card bg-light shadow p-0 m-2" style="width:18rem">
+    <div class="card-body bg-primary">
+      <h3 class="card-title text-light">${employee.name}</h3>
+      <h5 class="text-light">🖥️ ${employee.getRole()}</h5>
+    </div>
+    <ul class="list-group list-group-flush m-4">
+      <li class="list-group-item">ID: ${employee.id}</li>
+      <li class="list-group-item">Email: ${employee.email}</li>
+      <li class="list-group-item">GitHub: ${employee.github}</li>
+    </ul>
+  </div>
+
+`;
+    } else {
+      intTemp += `
+
+  <div class="card bg-light shadow p-0 m-2" style="width:18rem">
+    <div class="card-body bg-primary">
+      <h3 class="card-title text-light">${employee.name}</h3>
+      <h5 class="text-light">🎓 ${employee.getRole()}</h5>
+    </div>
+    <ul class="list-group list-group-flush m-4">
+      <li class="list-group-item">ID: ${employee.id}</li>
+      <li class="list-group-item">Email: ${employee.email}</li>
+      <li class="list-group-item">School: ${employee.school}</li>
+    </ul>
+  </div>
+
+`;
+    }
+  });
+  // finishedTemplate = managerTemp + engTemp + intTemp;
+  // return finishedTemplate;
+  return managerTemp + engTemp + intTemp;
+};
 
 const htmlTemplate = function (employees) {
   console.log(employees);
@@ -20,6 +77,7 @@ const htmlTemplate = function (employees) {
     <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
     <style>
     * {font-family:pangolin}
+    img {size: 20%}
     </style>
 </head>
  
@@ -30,38 +88,26 @@ const htmlTemplate = function (employees) {
         </div>
     </header>
 
- <div class="container">
- 
-
-
-  <div class="row m-5">
-    <div class="col-3 m-3 p-3">
-      <div class="card" style="width:18rem">
-        <div class="card-body bg-light.bg-gradient">
-          <h5 class="card-title">${employees[0].managerName}</h5>
-          <span class="icon">
-          <img src="https://img.icons8.com/external-bearicons-flat-bearicons/64/000000/external-Briefcase-business-and-marketing-bearicons-flat-bearicons.png"/>
-          </span>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID: ${employees[0].id}</li>
-          <li class="list-group-item">Email: ${employees[1].email}</li>
-          <li class="list-group-item">Office Number: ${employees[0].officeNumber}</li>
-          <li class="list-group-item">GitHub: ${employees[1].github}</li>
-          <li class="list-group-item">School: ${employees[2].school}</li>
-        </ul>
-      </div>
-    </div>
+  <div class="container">
+    <div class="row m-2 row-cols-1 row-cols-md-2 g-4">
+${cardGen(employees)}
+    </div
   </div>
-</div>
-
 </body>
 </html>
-    `;
+`;
 };
 
 module.exports = htmlTemplate;
 
-// engineer icon: <img src="https://img.icons8.com/external-wanicon-flat-wanicon/64/000000/external-computer-big-data-wanicon-flat-wanicon.png"/>
+/* <span class="icon">
+<img src="https://img.icons8.com/external-wanicon-flat-wanicon/64/000000/external-computer-big-data-wanicon-flat-wanicon.png"/>
+</span> */
 
-// intern icon: <img src="https://img.icons8.com/color/48/000000/motarboard.png"/>
+/* <span class="icon">
+<img src="https://img.icons8.com/color/48/000000/motarboard.png"/>
+</span> */
+
+/* <span class="icon">
+<img src="https://img.icons8.com/external-bearicons-flat-bearicons/64/000000/external-Briefcase-business-and-marketing-bearicons-flat-bearicons.png"/>
+</span> */

@@ -7,12 +7,6 @@ const writeHtml = require("./utils/generateHTML");
 
 const employees = [];
 
-const returnEmployeesArr = function () {
-  // console.log(employees);
-  // const generatedHtml = htmlTemplate(employees);
-  // writeHtml(generatedHtml);
-};
-
 const promptUser = () => {
   return inquirer
     .prompt([
@@ -139,8 +133,6 @@ const promptEmployee = () => {
       if (response.addEmployee) {
         return promptEmployee();
       }
-      // return returnEmployeesArr();
-      // console.log(employees);
       const template = htmlTemplate(employees);
       writeHtml(template);
     });

@@ -1,9 +1,8 @@
-// TODO function to check type of employee (class)
+// function to check type of employee (class)
 const cardGen = function (answers) {
   let managerTemp = "",
     engTemp = "",
     intTemp = "";
-  // let finishedTemplate = "";
   answers.forEach((employee) => {
     if (employee.getRole() == "Manager") {
       managerTemp += `
@@ -15,7 +14,9 @@ const cardGen = function (answers) {
     </div>
     <ul class="list-group list-group-flush m-4">
       <li class="list-group-item">ID: ${employee.id}</li>
-      <li class="list-group-item">Email: ${employee.email}</li>
+      <li class="list-group-item">Email: <a href="mailto:${employee.email}">${
+        employee.email
+      }</a></li>
       <li class="list-group-item">Office Number: ${employee.officeNumber}</li>
     </ul>
   </div>
@@ -31,8 +32,12 @@ const cardGen = function (answers) {
     </div>
     <ul class="list-group list-group-flush m-4">
       <li class="list-group-item">ID: ${employee.id}</li>
-      <li class="list-group-item">Email: ${employee.email}</li>
-      <li class="list-group-item">GitHub: ${employee.github}</li>
+      <li class="list-group-item">Email:<a href="mailto:${employee.email}">${
+        employee.email
+      }</a></li>
+      <li class="list-group-item">GitHub:<a href="http://github.com/${
+        employee.github
+      }" target="_blank">${employee.github}</a></li>
     </ul>
   </div>
 
@@ -47,7 +52,9 @@ const cardGen = function (answers) {
     </div>
     <ul class="list-group list-group-flush m-4">
       <li class="list-group-item">ID: ${employee.id}</li>
-      <li class="list-group-item">Email: ${employee.email}</li>
+      <li class="list-group-item">Email: <a href="mailto:${employee.email}">${
+        employee.email
+      }</a></li>
       <li class="list-group-item">School: ${employee.school}</li>
     </ul>
   </div>
@@ -55,8 +62,6 @@ const cardGen = function (answers) {
 `;
     }
   });
-  // finishedTemplate = managerTemp + engTemp + intTemp;
-  // return finishedTemplate;
   return managerTemp + engTemp + intTemp;
 };
 
@@ -89,9 +94,9 @@ const htmlTemplate = function (employees) {
     </header>
 
   <div class="container">
-    <div class="row m-2 row-cols-1 row-cols-md-2 g-4">
+    <div class="row m-2 row-cols-1 row-cols-md-2 g-4 d-flex justify-content-center">
 ${cardGen(employees)}
-    </div
+    </div>
   </div>
 </body>
 </html>
@@ -99,15 +104,3 @@ ${cardGen(employees)}
 };
 
 module.exports = htmlTemplate;
-
-/* <span class="icon">
-<img src="https://img.icons8.com/external-wanicon-flat-wanicon/64/000000/external-computer-big-data-wanicon-flat-wanicon.png"/>
-</span> */
-
-/* <span class="icon">
-<img src="https://img.icons8.com/color/48/000000/motarboard.png"/>
-</span> */
-
-/* <span class="icon">
-<img src="https://img.icons8.com/external-bearicons-flat-bearicons/64/000000/external-Briefcase-business-and-marketing-bearicons-flat-bearicons.png"/>
-</span> */

@@ -44,7 +44,9 @@ THEN I exit the application, and the HTML is generated
 
 
 ## Screenshot
+![image](https://user-images.githubusercontent.com/80355222/156414213-125fadf1-2535-4ce6-896d-e831ed53cb8e.png)
 
 
 ## Link to Walkthrough Video
+https://drive.google.com/file/d/1iUSDALELbbxZoIXDT7UmnFpi7JoOXcbE/view
 
